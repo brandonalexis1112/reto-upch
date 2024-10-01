@@ -1,3 +1,4 @@
+// src/components/molecules/UserCard.js
 import React from 'react';
 import './UserCard.css';
 
@@ -8,6 +9,8 @@ const UserCard = ({ user, selected, onSelect }) => (
       checked={selected}
       onChange={() => onSelect(user)}
     />
+    
+    {/* Mostrar la imagen y los detalles del usuario */}
     <img src={user.picture.thumbnail} alt={user.name.first} />
     <p>{user.name.first} {user.name.last}</p>
     <p>{user.gender}</p>

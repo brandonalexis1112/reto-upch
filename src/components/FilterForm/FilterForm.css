@@ -1,0 +1,10 @@
+.filter-form {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .filter-form .btn {
+    margin-left: 10px;
+  }
+  

@@ -9,7 +9,7 @@ const Home = () => {
   const [filter, setFilter] = useState({ nat: '', gender: '' });
 
   const toggleFilterVisibility = () => {
-    setFilterVisible(!filterVisible); // Muestra u oculta la caja de filtros
+    setFilterVisible(!filterVisible); 
   };
 
   const handleFilter = (nat, gender) => {
@@ -17,17 +17,15 @@ const Home = () => {
   };
 
   const handleClearFilters = () => {
-    setFilter({ nat: '', gender: '' }); // Restablecer los filtros
+    setFilter({ nat: '', gender: '' }); 
   };
 
   return (
     <div className="home">
       <h1 className="title">Listado de Usuarios</h1>
 
-      {/* Botón para mostrar/ocultar la caja de filtros */}
       <ButtonAtom label="Filtros" onClick={toggleFilterVisibility} />
 
-      {/* Caja de filtros que se oculta o muestra según el estado */}
       {filterVisible && (
         <div className="filter-box">
           <FilterForm onFilter={handleFilter} />
@@ -35,7 +33,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Lista de usuarios con los filtros aplicados */}
       <UserList filter={filter} />
     </div>
   );

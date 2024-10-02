@@ -1,8 +1,8 @@
 import React from 'react';
 import './ButtonA.css';
 
-const ButtonAtom = ({ label, onClick }) => (
-  <button className="btn btn-primary" onClick={onClick}>
+const ButtonAtom = ({ label, onClick, variant = "primary" }) => (
+  <button className={`btn btn-${variant}`} onClick={onClick}>
     {label}
   </button>
 );

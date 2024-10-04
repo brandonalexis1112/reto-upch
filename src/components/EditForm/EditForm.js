@@ -16,14 +16,19 @@ const EditForm = ({ user, show, handleClose, onSave }) => {
     e.preventDefault();  
     
     const updatedUser = {
-      ...user,
-      name: { ...user.name, first: name.split(" ")[0], last: name.split(" ")[1] || "" },
-      gender,
-      location: { ...user.location, street: { ...user.location.street, name: location.split(",")[0] }, city: location.split(",")[1].trim() },
-      phone,
-      email,
-      location: { ...user.location, country }
-    };
+  ...user,
+  name: { ...user.name, first: name.split(" ")[0], last: name.split(" ")[1] || "" },
+  gender,
+  location: {
+    ...user.location,
+    street: { ...user.location.street, name: location.split(",")[0] },
+    city: location.split(",")[1].trim(),
+    country,  
+  },
+  phone,
+  email
+};
+
     onSave(updatedUser); 
     handleClose();  
   };

@@ -16,6 +16,16 @@ h3{
     font-family: 'Montserrat', sans-serif;
 }
 
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0;
+  padding: .5rem;
+  width: 135px;
+  height: 40px;
+  text-align: start;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

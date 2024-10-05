@@ -72,64 +72,81 @@ const UserList = ({ filter }) => {
   };
 
   return (
-    <div className ="col-sm-12 pt-4">
-    <div className="card border rounded-2 ">
-      <div className="card-header py-3">
-      <div className=" fl ">
-      {selectedUser && (
-        <>
-          <ButtonAtom 
-           label="Editar"
-           icon="bi-pencil"
-           onClick={handleEdit} />
-           
-          <ButtonAtom
-            label="Eliminar"
-            icon="bi-trash3"
-            variant="outline-danger px-4 me-2"
-            onClick={handleDelete}
+    <div className="col-sm-12 pt-4">
+      <div className="card border rounded-2 ">
+        <div className="card-header py-3">
+          <div className=" fl ">
+            {selectedUser && (
+              <>
+                <ButtonAtom
+                  label="Editar"
+                  icon="bi-pencil"
+                  onClick={handleEdit}
+                />
+
+                <ButtonAtom
+                  label="Eliminar"
+                  icon="bi-trash3"
+                  variant="outline-danger px-4 me-2"
+                  onClick={handleDelete}
+                />
+              </>
+            )}
+          </div>
+        </div>
+        <InputAtom
+          placeholder="Buscar"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className="col-sm-12 ">
+          <tr className="user-card fs">
+            <th scope="col" className="pl-1">
+              <i class="bi bi-check-lg"></i>
+            </th>
+            <th scope="col " className="pl-2">
+              Foto
+            </th>
+            <th scope="col " className="pl-3">
+              Nombre
+            </th>
+            <th scope="col " className="pl-4">
+              Genero
+            </th>
+            <th scope="col" className="pl-5">
+              Dirección
+            </th>
+            <th scope="col" className="pl-6">
+              Teléfono
+            </th>
+            <th scope="col" className="pl-7">
+              Correo electrónico
+            </th>
+            <th scope="col" className="pl-8">
+              País
+            </th>
+          </tr>
+        </div>
+        {filteredUsers.map((user) => (
+          <UserCard
+            key={user.login.uuid}
+            user={user}
+            selected={selectedUser === user}
+            onSelect={handleSelect}
           />
-        </>
-      )}
-      </div>
-      </div>
-      <InputAtom
-        placeholder="Buscar"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <tr>
-        <th scope="col">
-          <i class="bi bi-check-lg"></i>
-        </th>
-        <th scope="col"></th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Genero</th>
-        <th scope="col">Dirección</th>
-        <th scope="col">Teléfono</th>
-        <th scope="col">Correo electrónico</th>
-        <th scope="col">País</th>
-      </tr>
-      {filteredUsers.map((user) => (
-        <UserCard
-          key={user.login.uuid}
-          user={user}
-          selected={selectedUser === user}
-          onSelect={handleSelect}
-        />
-      ))}
+        ))}
 
-      <p>Total de registros: {filteredUsers.length}</p>
+        <p className="p-footer">Registros: {filteredUsers.length}</p>
 
-      {selectedUser && (
-        <EditForm
-          user={selectedUser}
-          show={showEditModal}
-          handleClose={() => setShowEditModal(false)}
-          onSave={handleSaveChanges}
-        />
-      )}
-    </div>
+        {selectedUser && (
+          <EditForm
+            user={selectedUser}
+            show={showEditModal}
+            handleClose={() => setShowEditModal(false)}
+            onSave={handleSaveChanges}
+          />
+        )}
+      </div>
     </div>
   );
 };
